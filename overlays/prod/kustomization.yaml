@@ -1,0 +1,13 @@
+resources:
+- ../../base
+
+namePrefix: prod-  # Adds a prefix to all resource names
+
+patches:
+- target:
+    kind: Deployment
+    name: nginx-deployment  # Targeting the base deployment
+  patch: |
+    - op: replace
+      path: /spec/replicas
+      value: 5  # Override to use 5 replicas in production

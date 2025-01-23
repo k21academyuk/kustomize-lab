@@ -1,0 +1,13 @@
+resources:
+- ../../base
+
+namePrefix: dev-  # Adds a prefix to all resource names
+
+patches:
+- target:
+    kind: Deployment
+    name: nginx-deployment  # Targeting the base deployment
+  patch: |
+    - op: replace
+      path: /spec/replicas
+      value: 1  # Override to use 1 replica in development
